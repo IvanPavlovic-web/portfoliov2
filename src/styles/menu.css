@@ -1,0 +1,178 @@
+﻿/* â”€â”€ Menu overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.animated-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+  background-color: #0a0a0a;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.animated-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* â”€â”€ Rows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.menu-row {
+  position: relative;
+  display: flex;
+  line-height: 0.9;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.menu-row a {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  text-decoration: none;
+  letter-spacing: -0.03em;
+  transition: color 0.3s ease;
+}
+
+.menu-row a:hover {
+  color: #c99f45;
+}
+
+/* Row positions & sizes */
+.r-1 {
+  left: -110%;
+  justify-content: flex-end;
+  font-size: clamp(3rem, 7.8vw, 7.8125rem);
+  margin-bottom: 0.1em;
+}
+
+.r-2 {
+  left: 110%;
+  justify-content: flex-start;
+  padding-left: 3rem;
+  font-size: clamp(2rem, 5.5vw, 5.5rem);
+  margin-bottom: 0.05em;
+  color: #888;
+}
+
+.r-2 a {
+  color: #666 !important;
+}
+
+.r-2 a:hover {
+  color: #c99f45 !important;
+}
+
+.r-3 {
+  left: -110%;
+  justify-content: center;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  margin-bottom: 0.1em;
+}
+
+.r-4 {
+  left: 110%;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: clamp(2rem, 5vw, 5rem);
+  margin-bottom: 0.05em;
+  padding: 0 0.5rem;
+}
+
+.r-5 {
+  left: -110%;
+  justify-content: space-between;
+  font-size: clamp(1.2rem, 2.2vw, 2.2rem);
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  padding: 0 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #1f1f1f;
+  padding-top: 1rem;
+}
+
+.r-5 a {
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  color: #555 !important;
+  text-transform: uppercase;
+}
+
+.r-5 a:hover {
+  color: #c99f45 !important;
+}
+
+/* â”€â”€ Content wrap (hero sits inside, shrinks on menu open) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.menu-content-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* â”€â”€ Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.animated-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  mix-blend-mode: difference;
+}
+
+.animated-nav-logo {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  padding: 0.3rem 0.5rem 0.2rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.animated-nav-toggle {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 900px) {
+  .r-1 {
+    font-size: clamp(2.5rem, 10vw, 4.5rem);
+  }
+  .r-2 {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    padding-left: 1rem;
+  }
+  .r-3 {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+  .r-4 {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+  .r-5 {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}

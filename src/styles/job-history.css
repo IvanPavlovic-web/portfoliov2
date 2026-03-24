@@ -1,0 +1,161 @@
+﻿.job-history-section {
+  position: relative;
+  background: transparent;
+  padding: 8rem 0 0;
+  font-family: "Inter", sans-serif;
+}
+
+.job-history-header {
+  margin-bottom: 2.5rem;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.job-history-label {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f0f0f0;
+}
+
+.job-history-stack {
+  display: grid;
+  gap: 0;
+}
+
+.job-history-panel {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 2rem clamp(1.5rem, 5vw, 5rem);
+}
+
+.job-history-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) saturate(1.05);
+  transform: scale(1.08);
+}
+
+.job-history-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(10, 10, 10, 0.45),
+    rgba(10, 10, 10, 0.2)
+  );
+}
+
+.job-history-card {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  width: min(92vw, 820px);
+  padding: clamp(1.6rem, 3.2vw, 2.8rem);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.06)
+  );
+  backdrop-filter: blur(28px) saturate(1.2);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.job-history-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.job-history-index {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.job-history-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  margin: 1.25rem 0;
+}
+
+.job-history-dates {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #cfcfcf;
+  margin: 0 0 0.75rem;
+}
+
+.job-history-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f0f0f0;
+  margin: 0 0 0.4rem;
+}
+
+.job-history-company {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin: 0 0 1.25rem;
+}
+
+.job-history-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #d7d7d7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .job-history-panel {
+    top: 0;
+    min-height: 100svh;
+    padding: 1rem;
+  }
+
+  .job-history-card {
+    width: min(100%, 640px);
+    padding: 1.2rem;
+    border-radius: 18px;
+  }
+
+  .job-history-card-top {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .job-history-index {
+    align-self: flex-end;
+  }
+
+  .job-history-title {
+    font-size: clamp(1.35rem, 6vw, 2rem);
+  }
+
+  .job-history-company,
+  .job-history-desc {
+    font-size: 0.95rem;
+  }
+
+  .job-history-desc {
+    line-height: 1.65;
+  }
+}
