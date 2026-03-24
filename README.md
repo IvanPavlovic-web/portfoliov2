@@ -37,7 +37,7 @@ Populate the EmailJS values with your service ID, template ID, and public key. I
 
 The application lives in `src/`, where route pages are separated from reusable layout and UI components. Static assets are stored under `src/assets`, and global styling is split into dedicated CSS files inside `src/styles`. This keeps high-motion sections, page layouts, and reusable primitives easier to reason about during iteration.
 
-The router is configured in `src/App.tsx`, and the Vite deployment base is configured in `vite.config.ts`. Both are already prepared for GitHub Pages deployment under the `portfoliov2` repository path.
+The router is configured in `src/App.tsx`, and the Vite deployment base is configured in `vite.config.ts`. The build can now adapt automatically to either the `portfoliov2` GitHub Pages path or a root-level custom domain, depending on the Pages metadata provided during deployment.
 
 ## Deployment
 
