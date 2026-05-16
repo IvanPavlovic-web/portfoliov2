@@ -26,7 +26,15 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.22) 16%, rgba(0, 0, 0, 0.1) 42%, rgba(0, 0, 0, 0.34) 64%, rgba(0, 0, 0, 0.86) 88%, #000 100%),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.26) 0%,
+      rgba(0, 0, 0, 0.22) 16%,
+      rgba(0, 0, 0, 0.1) 42%,
+      rgba(0, 0, 0, 0.34) 64%,
+      rgba(0, 0, 0, 0.86) 88%,
+      #000 100%
+    ),
     radial-gradient(circle at center top, rgba(255, 255, 255, 0.1) 0%, transparent 42%);
 }
 
@@ -41,7 +49,11 @@
     radial-gradient(circle at 70% 12%, rgba(255, 255, 255, 0.18) 0 1px, transparent 1px),
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
     repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 4px);
-  background-size: 180px 180px, 240px 240px, 4px 4px, 6px 6px;
+  background-size:
+    180px 180px,
+    240px 240px,
+    4px 4px,
+    6px 6px;
 }
 
 .hero-frame {
@@ -116,6 +128,11 @@
   white-space: nowrap;
 }
 
+.hero-signature-last {
+  display: inline-block;
+  margin-left: 0.14em;
+}
+
 .hero-signature-mark {
   display: inline-block;
   margin-left: 0.04em;
@@ -161,5 +178,9 @@
   .hero-signature {
     font-size: clamp(3rem, 15vw, 6rem);
     line-height: 0.88;
+  }
+
+  .hero-signature-last {
+    margin-left: 0.1em;
   }
 }

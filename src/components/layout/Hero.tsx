@@ -101,13 +101,14 @@ export function Hero({ animateName = true }: HeroProps) {
           <div ref={bioBandRef} className="hero-bio-band">
             <p className="hero-bio">
               I design and build modern digital experiences with a focus on refined frontend craft,
-              clean visual systems, and motion that feels precise, immersive, and intentional.
+              clean visual systems, and motion that feels precise, immersive, and intentional, while
+              also working with Python and T-SQL for tooling, automation, and data-heavy workflows.
             </p>
           </div>
 
           <div ref={nameBandRef} className="hero-name-band">
             <h1 className="hero-signature">
-              IVAN PAVLOVIC
+              IVAN <span className="hero-signature-last">PAVLOVIC</span>
               <span className="hero-signature-mark">{"\u00AE"}</span>
             </h1>
           </div>

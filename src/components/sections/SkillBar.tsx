@@ -3,7 +3,7 @@ import { cn } from "@utils/cn";
 
 interface SkillBarProps {
   name: string;
-  level: number; // 0â€“100
+  level: number;
   className?: string;
 }
 
@@ -25,4 +25,3 @@ export function SkillBar({ name, level, className }: SkillBarProps) {
     </div>
   );
 }
-

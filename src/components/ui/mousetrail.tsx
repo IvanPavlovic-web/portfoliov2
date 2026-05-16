@@ -9,35 +9,28 @@ type ImageMouseTrailProps = {
   className?: string;
   poolSize?: number;
   fallbackSrc?: string;
-  /** 0â€“1: how fast each image chases the cursor. Lower = more lag. Default 0.12 */
   lerp?: number;
 };
 
 const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
-
-// linear interpolation
 const mix = (a: number, b: number, t: number) => a + (b - a) * t;
 
 export default function ImageMouseTrail({
   items,
-  distance = 38, // higher â†’ less frequent spawning
+  distance = 38,
   imgClass = "",
   children,
   className = "",
   poolSize = 10,
   fallbackSrc,
-  lerp = 0.12, // laggy-but-smooth cursor follow
+  lerp = 0.12,
 }: ImageMouseTrailProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const refs = useRef<HTMLImageElement[]>([]);
   const poolIndex = useRef(0);
   const srcIndex = useRef(0);
-
-  // raw cursor position inside the container
   const rawPos = useRef({ x: -9999, y: -9999 });
-  // smoothed cursor position (what images actually chase)
   const smoothPos = useRef({ x: -9999, y: -9999 });
-  // last position where we spawned an image
   const spawnPos = useRef({ x: -9999, y: -9999 });
 
   const rafId = useRef<number | null>(null);
@@ -64,17 +57,15 @@ export default function ImageMouseTrail({
     if (a._trailTimeout) window.clearTimeout(a._trailTimeout);
     a._trailTimeout = window.setTimeout(() => {
       image.dataset.status = "inactive";
-    }, 1800); // images stay a bit longer so the trail feels denser
+    }, 1800);
   };
 
-  // rAF loop: smooth the cursor, spawn when smoothed pos moved enough
   const tick = () => {
     if (!isInside.current) {
       rafId.current = requestAnimationFrame(tick);
       return;
     }
 
-    // lerp smoothed position toward raw cursor
     smoothPos.current.x = mix(smoothPos.current.x, rawPos.current.x, lerp);
     smoothPos.current.y = mix(smoothPos.current.y, rawPos.current.y, lerp);
 

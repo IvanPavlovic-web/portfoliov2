@@ -1,4 +1,4 @@
-﻿.services-section {
+.services-section {
   position: relative;
   background: #0a0a0a;
   padding: 6rem clamp(1.5rem, 5vw, 5rem) 8rem;
@@ -78,6 +78,14 @@
   color: color-mix(in srgb, #22c55e 55%, #1a1a1a);
 }
 
+.services-text .tech-python {
+  color: color-mix(in srgb, #3776ab 58%, #1a1a1a);
+}
+
+.services-text .tech-sql {
+  color: color-mix(in srgb, #ef4444 52%, #1a1a1a);
+}
+
 .services-text .tech-framer {
   color: color-mix(in srgb, #e11d48 55%, #1a1a1a);
 }
@@ -107,6 +115,7 @@
 @media (max-width: 640px) {
   .services-row {
     min-height: 45vh;
+    justify-content: flex-start;
   }
 
   .services-text {

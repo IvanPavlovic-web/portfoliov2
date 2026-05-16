@@ -1,101 +1,141 @@
-import portrait from "@assets/footer/portrait.jpg";
-import portraitFallback from "@assets/placeholders/portrait-fallback.svg";
+import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 
-const NAV_LINKS = [
-  { href: "https://instagram.com/ipwebdev", label: "Instagram" },
-  { href: "https://linkedin.com/in/ipprod", label: "LinkedIn" },
-  { href: "https://github.com/IvanPavlovic-web", label: "GitHub" },
-  { href: "mailto:ipdeveloper2001@gmail.com", label: "Email" },
+const SERVICE_LINKS = [
+  { href: "/#services", label: "Website Development" },
+  { href: "/#services", label: "Frontend Systems" },
+  { href: "/#services", label: "Motion & Interaction" },
+  { href: "/contact", label: "Project Planning" },
+];
+
+const EXPLORE_LINKS = [
+  { href: "/projects", label: "All Projects" },
+  { href: "/#projects", label: "Selected Work" },
+  { href: "/#certificates", label: "Certificates" },
+  { href: "/#faq", label: "FAQ" },
+];
+
+const SOCIAL_LINKS: Array<{
+  href: string;
+  label: string;
+  value: string;
+  icon: LucideIcon;
+  external?: boolean;
+}> = [
+  {
+    href: "https://instagram.com/ipwebdev",
+    label: "Instagram",
+    value: "@ipwebdev",
+    icon: Instagram,
+    external: true,
+  },
+  {
+    href: "https://linkedin.com/in/ipprod",
+    label: "LinkedIn",
+    value: "linkedin.com/in/ipprod",
+    icon: Linkedin,
+    external: true,
+  },
+  {
+    href: "https://github.com/IvanPavlovic-web",
+    label: "GitHub",
+    value: "github.com/IvanPavlovic-web",
+    icon: Github,
+    external: true,
+  },
+  {
+    href: "mailto:ipdeveloper2001@gmail.com",
+    label: "Email",
+    value: "ipdeveloper2001@gmail.com",
+    icon: Mail,
+  },
+];
+
+const STACK_ITEMS = [
+  "React 19",
+  "TypeScript",
+  "Python",
+  "T-SQL",
+  "GSAP",
+  "Framer Motion",
+  "Three.js",
+  "Vite",
 ];
 
 export function Footer() {
   return (
     <footer className="footer">
-      <nav className="footer-nav">
-        <span className="footer-brand">...END OF THE LINE</span>
-        <ul className="footer-nav-links">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <a href={link.href} target="_blank" rel="noreferrer">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className="footer-card">
+        <div className="footer-top">
+          <div className="footer-intro">
+            <p className="footer-intro-copy">
+              Frontend developer
+              <br />
+              for polished web experiences
+            </p>
+          </div>
 
-      <div className="footer-main">
-        <div className="footer-left">
-          <div className="footer-description">
-            <p className="footer-desc-label">Bla bla bla blaa</p>
-            <div className="footer-desc-cols">
-              <p>
-                Building modern, performant web experiences with React, TypeScript, and clean,
-                scalable UI architecture, with a strong focus on maintainability and performance
-                optimization. Experienced in developing responsive interfaces and structuring
-                applications for long-term growth and reliability.
-              </p>
-              <p>
-                Focused on smooth, high-performance animations using GSAP and Framer Motion,
-                enhancing user interaction without sacrificing speed. Passionate about creating
-                polished, visually engaging experiences that balance aesthetics with usability,
-                supported by real-world problem-solving and production experience.
-              </p>
+          <a className="footer-contact-pill" href="/contact">
+            <span>Contact</span>
+            <ArrowUpRight size={24} aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="footer-grid">
+          <div className="footer-column">
+            <p className="footer-column-title">Services</p>
+            <div className="footer-link-list">
+              {SERVICE_LINKS.map((link) => (
+                <a key={link.label} href={link.href} className="footer-link">
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
 
-          <h2 className="footer-headline">IVAN PAVLOVIC</h2>
-
-          <div className="footer-bottom-row">
-            <div className="footer-icons">
-              <div className="icon-block">
-                <div className="icon-inner" />
-              </div>
-              <div className="icon-block">
-                <div className="icon-inner" />
-              </div>
+          <div className="footer-column">
+            <p className="footer-column-title">Explore</p>
+            <div className="footer-link-list">
+              {EXPLORE_LINKS.map((link) => (
+                <a key={link.label} href={link.href} className="footer-link">
+                  {link.label}
+                </a>
+              ))}
             </div>
-
-            <a
-              className="footer-arrow-btn"
-              href="mailto:ipdeveloper2001@gmail.com"
-              aria-label="Send email"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 6h16v12H4z" />
-                <path d="m4 7 8 6 8-6" />
-              </svg>
-              <span>LET&apos;S CONNECT</span>
-            </a>
           </div>
-        </div>
 
-        <div className="footer-right">
-          <img
-            src={portrait}
-            alt="Portrait"
-            className="footer-figure"
-            onError={(event) => {
-              if (event.currentTarget.src.endsWith(portraitFallback)) return;
-              event.currentTarget.src = portraitFallback;
-            }}
-          />
-          <div className="footer-orange-overlay" />
-        </div>
+          <div className="footer-column">
+            <p className="footer-column-title">Say hello!</p>
+            <div className="footer-socials">
+              {SOCIAL_LINKS.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="footer-social-pill"
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
+                    aria-label={link.label}
+                  >
+                    <Icon size={14} aria-hidden="true" />
+                    <span>{link.value}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
 
-        <div className="footer-dots">
-          <span className="dot" />
-          <span className="dot dot--active" />
-          <span className="dot" />
+          <div className="footer-column">
+            <p className="footer-column-title">Creative stack</p>
+            <div className="footer-stack">
+              {STACK_ITEMS.map((item) => (
+                <span key={item} className="footer-stack-pill">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

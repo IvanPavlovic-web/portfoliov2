@@ -1,6 +1,7 @@
-﻿import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ReactLenis } from "lenis/react";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 import cert1 from "@assets/certificates/cert-1.webp";
 import cert2 from "@assets/certificates/cert-2.webp";
@@ -48,6 +49,7 @@ export function Certificates() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [maxX, setMaxX] = useState(0);
   const [scrollLength, setScrollLength] = useState(0);
+  const isPhoneLayout = useMediaQuery("(max-width: 768px)");
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -59,6 +61,13 @@ export function Certificates() {
   useEffect(() => {
     const measure = () => {
       if (!trackRef.current) return;
+
+      if (isPhoneLayout) {
+        setMaxX(0);
+        setScrollLength(0);
+        return;
+      }
+
       const trackWidth = trackRef.current.scrollWidth;
       const viewport = window.innerWidth;
       const overflow = Math.max(0, trackWidth - viewport);
@@ -75,7 +84,7 @@ export function Certificates() {
       observer.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, []);
+  }, [isPhoneLayout]);
 
   return (
     <ReactLenis root>
@@ -91,7 +100,11 @@ export function Certificates() {
 
         <div className="certificates-scroll-shell">
           <div className="certificates-sticky">
-            <motion.div ref={trackRef} className="certificates-track" style={{ x }}>
+            <motion.div
+              ref={trackRef}
+              className="certificates-track"
+              style={isPhoneLayout ? undefined : { x }}
+            >
               {CERTIFICATES.map((cert) => (
                 <a
                   key={cert.id}

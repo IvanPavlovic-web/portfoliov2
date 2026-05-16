@@ -8,19 +8,18 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-300 hover:border-[var(--color-text-primary)]/40 hover:shadow-lg hover:shadow-[var(--color-text-primary)]/5">
-      {/* Header */}
+    <article className="group flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-300 hover:border-[var(--color-text-primary)]/40 hover:shadow-[var(--color-text-primary)]/5 hover:shadow-lg">
       <div className="mb-4 flex items-start justify-between gap-4">
-        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-text-primary)] transition-colors">
+        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] transition-colors group-hover:text-[var(--color-text-primary)]">
           {project.title}
         </h3>
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex shrink-0 items-center gap-2">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
               aria-label="GitHub repository"
             >
               <Github size={16} />
@@ -31,7 +30,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              className="text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
               aria-label="Live demo"
             >
               <ExternalLink size={16} />
@@ -40,12 +39,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Description */}
-      <p className="mb-4 flex-1 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+      <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">
         {project.description}
       </p>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
           <Badge key={tag} variant="outline">
@@ -56,4 +53,3 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </article>
   );
 }
-

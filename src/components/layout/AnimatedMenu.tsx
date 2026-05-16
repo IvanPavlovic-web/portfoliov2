@@ -60,8 +60,7 @@ export function AnimatedMenu() {
 
   return (
     <>
-      {/* Menu overlay */}
-      <div ref={menuRef} className={`animated-menu${isOpen ? " is-open" : ""}`}>
+      <div ref={menuRef} className={`animated-menu${isOpen ? "is-open" : ""}`}>
         {MENU_ROWS.map((row, i) => (
           <div key={i} className={row.className}>
             {row.items.map(({ label, to }) => (
@@ -81,10 +80,8 @@ export function AnimatedMenu() {
         ))}
       </div>
 
-      {/* Website content slot â€” hero will render inside this */}
       <div ref={contentRef} className="menu-content-wrap" />
 
-      {/* Navbar */}
       <nav className="animated-nav">
         <div className="animated-nav-logo">IP</div>
         <button className="animated-nav-toggle" onClick={handleToggle}>

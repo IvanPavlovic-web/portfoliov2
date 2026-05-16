@@ -14,11 +14,10 @@ export function HomePage() {
 
   usePageTitle(
     "Ivan Pavlovic - Frontend Developer",
-    "Portfolio of Ivan Pavlovic, a frontend developer specializing in React, TypeScript, and modern UI.",
+    "Portfolio of Ivan Pavlovic, a frontend developer specializing in React, TypeScript, modern UI, plus Python and T-SQL workflows.",
   );
 
   useEffect(() => {
-    // Keep the page anchored at the top while the preloader is active.
     const prevOverflow = document.body.style.overflow;
     const prevOverscroll = document.body.style.overscrollBehavior;
     const scrollToTop = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });

@@ -1,4 +1,3 @@
-﻿/* â”€â”€ Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .projects-section {
   position: relative;
   background-color: #0a0a0a;
@@ -6,7 +5,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .projects-header {
   margin-bottom: 3rem;
   border-bottom: 1px solid #1a1a1a;
@@ -27,7 +25,6 @@
   color: #f0f0f0;
 }
 
-/* â”€â”€ Row â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .projects-row {
   position: relative;
   display: flex;
@@ -68,7 +65,6 @@
   transition: color 0.3s ease;
 }
 
-/* Arrow button */
 .projects-row-arrow {
   position: relative;
   z-index: 2;
@@ -83,7 +79,6 @@
   flex-shrink: 0;
 }
 
-/* Fill overlay that slides up on hover */
 .projects-row-fill {
   position: absolute;
   bottom: 0;
@@ -95,7 +90,6 @@
   z-index: 1;
 }
 
-/* Active state */
 .projects-row.is-active .projects-row-fill {
   height: 100%;
   background-color: #f0f0f0;
@@ -114,7 +108,6 @@
   transform: rotate(45deg);
 }
 
-/* GitHub row accent */
 .projects-row.is-github .projects-row-name {
   color: #f0f0f0;
 }
@@ -123,9 +116,6 @@
   color: #0a0a0a;
 }
 
-/* GitHub row uses the same hover fill as other rows */
-
-/* â”€â”€ Floating cursor image â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .projects-cursor-img {
   position: fixed;
   pointer-events: none;
@@ -149,14 +139,13 @@
   }
 }
 
-/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
   .projects-section {
     padding: 6rem 1rem 5rem;
   }
 
   .projects-list {
-    padding-bottom: min(42vw, 230px);
+    padding-bottom: 0;
   }
 
   .projects-row {
@@ -170,10 +159,6 @@
 
   .projects-row-name {
     font-size: clamp(1.4rem, 7.8vw, 2.35rem);
-  }
-
-  .projects-cursor-img {
-    display: block;
   }
 
   .projects-cursor-img.is-mobile {

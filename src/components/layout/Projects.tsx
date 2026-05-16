@@ -72,6 +72,7 @@ export function Projects() {
   const rafRef = useRef<number | null>(null);
   const prevPos = useRef({ x: 0, y: 0 });
   const isCoarsePointer = useMediaQuery("(hover: none), (pointer: coarse)");
+  const isPhoneLayout = useMediaQuery("(max-width: 768px)");
 
   const activateProject = useCallback((id: number, nextPos?: { x: number; y: number }) => {
     setActiveId(id);
@@ -111,8 +112,15 @@ export function Projects() {
 
   useEffect(() => {
     if (!isCoarsePointer) return;
+    if (isPhoneLayout) return;
     activateProject(PROJECTS[0].id);
-  }, [activateProject, isCoarsePointer]);
+  }, [activateProject, isCoarsePointer, isPhoneLayout]);
+
+  useEffect(() => {
+    if (!isPhoneLayout) return;
+    setOpacity(0);
+    setScale(0.5);
+  }, [isPhoneLayout]);
 
   const handleEnter = useCallback(
     (id: number) => {
@@ -137,10 +145,11 @@ export function Projects() {
 
   const handleProjectPointerDown = useCallback(
     (id: number, event: React.PointerEvent<HTMLAnchorElement>) => {
+      if (isPhoneLayout) return;
       if (!isCoarsePointer) return;
       activateProject(id, { x: event.clientX, y: event.clientY });
     },
-    [activateProject, isCoarsePointer],
+    [activateProject, isCoarsePointer, isPhoneLayout],
   );
 
   const handleProjectClick = useCallback(
@@ -192,7 +201,7 @@ export function Projects() {
         ))}
       </div>
 
-      {activeProject && (
+      {activeProject && !isPhoneLayout && (
         <img
           src={activeProject.img}
           alt={activeProject.name}

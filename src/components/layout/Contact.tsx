@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 import ImageMouseTrail from "@components/ui/mousetrail";
 import mediaFallback from "@assets/placeholders/media-fallback.svg";
 
-// Import all .webp images from the contact assets folder.
-// Vite glob import automatically picks up every .webp you drop in that folder.
-// No need to list them manually; just add/remove files from the folder.
 const imageModules = import.meta.glob("../../assets/contact/*.webp", {
   eager: true,
   import: "default",

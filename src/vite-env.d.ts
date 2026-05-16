@@ -1,6 +1,3 @@
-﻿/// <reference types="vite/client" />
-
-// Image imports
 declare module "*.jpg" {
   const src: string;
   export default src;

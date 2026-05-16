@@ -207,9 +207,7 @@ void main(){vec4 color;mainImage(color,gl_FragCoord.xy);gl_FragColor=color;}`;
       };
 
       const resizeObserver =
-        typeof ResizeObserver !== "undefined"
-          ? new ResizeObserver(() => updatePlacement())
-          : null;
+        typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => updatePlacement()) : null;
       resizeObserver?.observe(containerRef.current);
 
       window.addEventListener("resize", updatePlacement);
@@ -307,7 +305,7 @@ const FAQ_ITEMS = [
 ];
 
 export function FAQ() {
-  const [openItems, setOpenItems] = useState<string[]>(["faq-1"]);
+  const [openItems, setOpenItems] = useState<string[]>([]);
   const openSet = useMemo(() => new Set(openItems), [openItems]);
   const leftItems = FAQ_ITEMS.slice(0, 3);
   const rightItems = FAQ_ITEMS.slice(3);
@@ -358,7 +356,7 @@ export function FAQ() {
               {group.map((item) => {
                 const isOpen = openSet.has(item.id);
                 return (
-                  <article key={item.id} className={`faq-item${isOpen ? " is-open" : ""}`}>
+                  <article key={item.id} className={`faq-item${isOpen ? "is-open" : ""}`}>
                     <button
                       className="faq-trigger"
                       onClick={() => toggleItem(item.id)}

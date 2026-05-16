@@ -18,7 +18,6 @@ const normalizeBase = (value: string | undefined, fallback: string) => {
   return `/${base.replace(/^\/+|\/+$/g, "")}/`;
 };
 
-// https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, resolveFromRoot("./"), "");
   const base = normalizeBase(env.VITE_SITE_BASE, mode === "production" ? "/portfoliov2/" : "/");

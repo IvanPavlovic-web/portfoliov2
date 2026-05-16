@@ -40,7 +40,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
 
     const ctx = gsap.context(() => {
       try {
-        // Split first name and last name separately
         const splitFirst = SplitText.create(firstNameRef.current!, {
           type: "chars",
           charsClass: "char",
@@ -58,15 +57,14 @@ export function Preloader({ onComplete }: PreloaderProps) {
           mask: "lines",
         });
 
-        const firstChars = splitFirst.chars as HTMLElement[]; // I, V, A, N
-        const lastChars = splitLast.chars as HTMLElement[]; // P, A, V, L, O, V, I, C
+        const firstChars = splitFirst.chars as HTMLElement[];
+        const lastChars = splitLast.chars as HTMLElement[];
         const allChars = [...firstChars, ...lastChars];
         const lines = splitCopy.lines as HTMLElement[];
 
-        const charI = firstChars[0]; // "I"
-        const charP = lastChars[0]; // "P"
+        const charI = firstChars[0];
+        const charP = lastChars[0];
 
-        // Initial states -- alternate up/down per char
         allChars.forEach((char, i) => {
           gsap.set(char, { yPercent: i % 2 === 0 ? -100 : 100 });
         });
@@ -81,12 +79,10 @@ export function Preloader({ onComplete }: PreloaderProps) {
 
         const tl = gsap.timeline({ delay: 0.25 });
 
-        // Progress bar
         tl.to(progressRef.current, { scaleX: 1, duration: 4, ease: "power3.inOut" })
           .set(progressRef.current, { transformOrigin: "right" })
           .to(progressRef.current, { scaleX: 0, duration: 1, ease: "power3.in" });
 
-        // Images reveal
         imgDivs.forEach((img, i) => {
           tl.to(
             img,
@@ -104,13 +100,10 @@ export function Preloader({ onComplete }: PreloaderProps) {
           tl.to(inner, { scale: 1, duration: 1.5, ease: "hop", delay: i * 0.75 }, "-=5.25");
         });
 
-        // Copy in
         tl.to(lines, { yPercent: 0, duration: 2, ease: "hop", stagger: 0.1 }, "-=5.5");
 
-        // All chars in
         tl.to(allChars, { yPercent: 0, duration: 1, ease: "hop", stagger: 0.025 }, "-=5");
 
-        // Images collapse
         tl.to(
           imagesWrapRef.current,
           {
@@ -121,10 +114,8 @@ export function Preloader({ onComplete }: PreloaderProps) {
           "-=1.5",
         );
 
-        // Copy out
         tl.to(lines, { y: "-125%", duration: 2, ease: "hop", stagger: 0.1 }, "-=2");
 
-        // Scatter all chars except I and P
         tl.to(
           allChars,
           {
@@ -137,7 +128,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
             stagger: 0.025,
             delay: 0.5,
             onStart: () => {
-              // Allow I and P to travel outside their masks
               [charI, charP].forEach((el) => {
                 const mask = el.parentElement;
                 if (mask?.classList.contains("char-mask")) {
@@ -150,7 +140,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
               const rI = charI.getBoundingClientRect();
               const rP = charP.getBoundingClientRect();
 
-              // Move I slightly left of center, P slightly right -- side by side
               gsap.to(charI, {
                 duration: 1,
                 ease: "hop",
@@ -177,7 +166,6 @@ export function Preloader({ onComplete }: PreloaderProps) {
           "-=2.5",
         );
 
-        // Wipe out
         tl.to(
           preloaderRef.current,
           {
@@ -199,8 +187,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
     });
 
     return () => ctx.revert();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [onComplete]);
 
   const images = [img1, img2, img3, img4];
 
