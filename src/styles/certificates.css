@@ -118,7 +118,7 @@
 
 @media (max-width: 768px) {
   .certificates-section {
-    --cert-card-width: clamp(225px, 58vw, 270px);
+    --cert-card-width: min(240px, calc(100vw - 5rem));
     padding: 6rem 0 4.5rem;
   }
 
@@ -155,7 +155,10 @@
 
   .cert-card {
     gap: 0.8rem;
+    width: var(--cert-card-width);
     min-width: var(--cert-card-width);
+    max-width: var(--cert-card-width);
+    flex: 0 0 var(--cert-card-width);
     scroll-snap-align: start;
   }
 
@@ -175,10 +178,10 @@
   .cert-desc {
     font-size: 0.8rem;
     line-height: 1.42;
-    max-width: 34ch;
+    max-width: none;
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
   }
 }
