@@ -12,7 +12,6 @@ const EXPLORE_LINKS = [
   { href: "/projects", label: "All Projects" },
   { href: "/#projects", label: "Selected Work" },
   { href: "/#certificates", label: "Certificates" },
-  { href: "/#faq", label: "FAQ" },
 ];
 
 const SOCIAL_LINKS: Array<{

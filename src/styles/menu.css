@@ -1,7 +1,9 @@
 .animated-menu {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,7 +111,7 @@
 .menu-content-wrap {
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 9998;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   transform-origin: center;
   pointer-events: none;
@@ -126,6 +128,27 @@
   align-items: center;
   padding: 1.5rem 2rem;
   mix-blend-mode: difference;
+}
+
+.animated-menu-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 10001;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  padding: 0.85rem 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.animated-menu-close:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .animated-nav-logo {

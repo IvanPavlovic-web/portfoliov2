@@ -7,7 +7,6 @@ const MENU_ROWS = [
   { items: [{ label: "Projects", to: "#projects" }], className: "menu-row r-2" },
   { items: [{ label: "Certificates", to: "#certificates" }], className: "menu-row r-3" },
   { items: [{ label: "Job History", to: "#job-history" }], className: "menu-row r-4" },
-  { items: [{ label: "FAQ", to: "#faq" }], className: "menu-row r-5" },
   { items: [{ label: "Services", to: "#services" }], className: "menu-row r-5" },
   { items: [{ label: "Contact", to: "#contact" }], className: "menu-row r-5" },
 ];
@@ -23,12 +22,19 @@ export function AnimatedMenu() {
 
     const tl = gsap.timeline({ paused: true });
 
-    tl.to(contentRef.current, {
-      duration: 2,
-      ease: "power4.inOut",
-      clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
-      scale: 0.5,
-    });
+    tl.fromTo(
+      contentRef.current,
+      {
+        clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
+        scale: 0.5,
+      },
+      {
+        duration: 2,
+        ease: "power4.inOut",
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        scale: 1,
+      },
+    );
 
     tl.to(
       rows,
@@ -41,6 +47,7 @@ export function AnimatedMenu() {
       "-=2.5",
     );
 
+    tl.eventCallback("onReverseComplete", () => setIsOpen(false));
     tlRef.current = tl;
 
     return () => {
@@ -53,14 +60,20 @@ export function AnimatedMenu() {
     if (isOpen) {
       tlRef.current.reverse();
     } else {
-      tlRef.current.play();
+      setIsOpen(true);
+      requestAnimationFrame(() => tlRef.current?.play());
     }
-    setIsOpen((prev) => !prev);
   };
 
   return (
     <>
-      <div ref={menuRef} className={`animated-menu${isOpen ? "is-open" : ""}`}>
+      <div ref={menuRef} className={`animated-menu${isOpen ? " is-open" : ""}`}>
+        {isOpen && (
+          <button className="animated-menu-close" onClick={handleToggle} type="button">
+            Close
+          </button>
+        )}
+
         {MENU_ROWS.map((row, i) => (
           <div key={i} className={row.className}>
             {row.items.map(({ label, to }) => (

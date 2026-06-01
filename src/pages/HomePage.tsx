@@ -5,7 +5,6 @@ import { Hero } from "@components/layout/Hero";
 import { Projects } from "@components/layout/Projects";
 import { Certificates } from "@components/layout/Certificates";
 import { JobHistory } from "@components/layout/JobHistory";
-import { FAQ } from "@components/layout/FAQ";
 import { Services } from "@components/layout/Services";
 import { Contact } from "@components/layout/Contact";
 
@@ -54,7 +53,6 @@ export function HomePage() {
         <Projects />
         <Certificates />
         <JobHistory />
-        <FAQ />
         <Services />
         <Contact />
       </div>
